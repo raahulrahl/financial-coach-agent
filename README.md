@@ -5,7 +5,7 @@
 <h1 align="center">financial-coach-agent</h1>
 
 <p align="center">
-  <strong>AI Financial Coach Agent is a personalized financial advisor that analyzes user income, expenses, debts, and goals to provide actionable recommendations for budgeting, savings, and debt reduction. Using a multi-agent system, it delivers optimized financial strategies, tracks progress, and generates interactive visualizations, including expense breakdowns, savings plans, and debt payoff timelines, helping users make informed financial decisions efficiently.</strong>
+  <strong>AI-powered personal finance coach that provides comprehensive financial guidance, budget planning, debt management strategies, and investment education. Helps users develop healthy financial habits and make informed money decisions through personalized coaching and actionable insights.</strong>
 </p>
 
 <p align="center">
@@ -19,18 +19,26 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
-AI Financial Coach Agent is a personalized financial advisor that analyzes user income, expenses, debts, and goals to provide actionable recommendations for budgeting, savings, and debt reduction. Using a multi-agent system, it delivers optimized financial strategies, tracks progress, and generates interactive visualizations, including expense breakdowns, savings plans, and debt payoff timelines, helping users make informed financial decisions efficiently.. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents.
+AI Financial Coach Agent is a comprehensive personal finance advisor that provides educational guidance, budget planning, debt management strategies, and investment education. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents, it helps users develop healthy financial habits and make informed money decisions through personalized coaching and actionable insights.
 
 **Key Capabilities:**
-- 🔍 [Add your key capabilities here]
-- ✅ [Add another capability]
-- 🚨 [Add another capability]
+- **Budget Planning & Optimization** - Create personalized monthly budgets with percentage-based allocation
+- **Debt Management Strategies** - Snowball vs avalanche methods with payoff timelines
+- **Savings Goal Setting** - Emergency fund planning and progress tracking
+- **Financial Education** - Investment concepts, risk management, and financial literacy
+- **Spending Analysis** - Identify patterns and optimize expenses
+- **Risk Assessment** - Educational guidance on financial risks
+
+**Educational Focus:**
+- Always includes clear disclaimers about not being a certified financial advisor
+- Provides step-by-step actionable strategies
+- Focuses on teaching concepts rather than specific product recommendations
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -93,34 +101,46 @@ gh repo create Paraschamoli/financial-coach-agent --public --source=. --remote=o
 ### Example Queries
 
 ```bash
-# Example query 1
-"[Add example query here]"
+# Example query 1 - Budget Planning
+"help me create a monthly budget for $5,200 income with rent $1,500, utilities $250, groceries $600"
 
-# Example query 2
-"[Add another example]"
+# Example query 2 - Debt Management
+"what's the best strategy to pay off $8,000 credit card debt at 22% interest"
+
+# Example query 3 - Investment Education
+"how can I start investing with $100 and what are index funds"
+
+# Example query 4 - Savings Planning
+"I earn $5,200 monthly, how much should I save for emergency fund and retirement"
 ```
 
 ### Input Formats
 
 **Plain Text:**
 ```
-[Describe expected input format]
+Natural language queries about personal finance, budgeting, debt management, or investment education.
+Examples:
+- "help me create a budget"
+- "what's the best way to pay off credit card debt"
+- "teach me about index funds"
 ```
 
 **JSON:**
 ```json
 {
-  "content": "[example content]",
-  "focus": "[example focus]"
+  "content": "Create a monthly budget for $5,200 income",
+  "focus": "budget-planning"
 }
 ```
 
 ### Output Structure
 
-The agent returns structured output with:
-- **[Output Component 1]**: Description
-- **[Output Component 2]**: Description
-- **[Output Component 3]**: Description
+The agent returns structured financial coaching with:
+- **📊 Budget Framework**: Percentage-based allocation with categories
+- **🎯 Debt Strategies**: Snowball vs avalanche methods with timelines
+- **📚 Educational Content**: Clear explanations of financial concepts
+- **⚠️ Disclaimers**: Always mentions not a certified financial advisor
+- **📈 Action Steps**: Step-by-step guidance and next steps
 
 ---
 
@@ -145,30 +165,41 @@ For complete API documentation, request/response formats, and examples, visit:
 
 ## 🎯 Skills
 
-### financial_coach_agent (v1.0.0)
+### financial-coach (v1.0.0)
 
 **Primary Capability:**
-- [Describe what this skill does]
-- [Add key features]
+- **Personalized Financial Coaching** - Comprehensive guidance for budgeting, debt management, and financial education
+- **Educational Focus** - Teaching concepts and strategies without specific product recommendations
+- **Risk-Aware Guidance** - Includes appropriate disclaimers and safety considerations
 
 **Features:**
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
+- **Budget Creation & Optimization** - Percentage-based allocation with customizable categories
+- **Debt Payoff Strategies** - Snowball vs avalanche methods with timeline calculations
+- **Emergency Fund Planning** - 6-month expense buffer recommendations
+- **Investment Education** - Index funds, risk management, and portfolio concepts
+- **Spending Pattern Analysis** - Identify habits and optimization opportunities
+- **Financial Wellness Assessment** - Holistic financial health evaluation
 
 **Best Used For:**
-- [Use case 1]
-- [Use case 2]
-- [Use case 3]
+- Personal budget creation and optimization
+- Credit card debt repayment planning
+- Emergency fund goal setting
+- Investment education and guidance
+- Financial habit improvement
+- Savings strategy development
 
 **Not Suitable For:**
-- [Anti-pattern 1]
-- [Anti-pattern 2]
+- Specific investment product recommendations
+- Tax preparation or legal advice
+- Insurance policy recommendations
+- Complex financial planning requiring professional certification
+- Guaranteed return promises
 
 **Performance:**
-- Average processing time: ~[X] seconds
-- Max concurrent requests: [N]
-- Memory per request: [X]MB
+- Average processing time: ~3 seconds
+- Max concurrent requests: 10
+- Memory per request: 256MB
+- Response format: Markdown with structured sections
 
 ---
 
@@ -341,5 +372,6 @@ uvx cookiecutter https://github.com/getbindu/create-bindu-agent.git
   <a href="https://bindus.directory">🌐 Agent Directory</a>
 </p>
 
-#   f i n a n c i a l - c o a c h - a g e n t  
+#   f i n a n c i a l - c o a c h - a g e n t 
+ 
  

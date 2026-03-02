@@ -1,0 +1,301 @@
+id: financial-coach-v1
+name: financial-coach
+version: 1.0.0
+author: paras@getbindu.com
+
+# Description
+description: |
+  AI-powered personal finance coach that provides comprehensive financial guidance, budget planning,
+  debt management strategies, and investment education. Helps users develop healthy financial habits
+  and make informed money decisions through personalized coaching and actionable insights.
+
+# Tags and Modes
+tags:
+  - financial-coaching
+  - personal-finance
+  - budget-planning
+  - debt-management
+  - investment-education
+  - financial-habits
+  - money-management
+  - financial-wellness
+  - savings-strategies
+  - expense-tracking
+
+input_modes:
+  - text/plain
+  - application/json
+
+output_modes:
+  - text/plain
+  - text/markdown
+  - application/json
+
+# Example Queries
+examples:
+  - "help me create a monthly budget"
+  - "what's the best strategy to pay off credit card debt"
+  - "how can I start investing with $100"
+  - "help me understand my spending habits"
+  - "what's a good emergency fund size"
+  - "how do I improve my credit score"
+  - "teach me about index funds"
+  - "help me set financial goals"
+
+# Detailed Capabilities
+capabilities_detail:
+  primary_capability:
+    supported: true
+    description: "Personalized financial coaching and guidance"
+    features:
+      - "Budget creation and optimization strategies"
+      - "Debt repayment planning and prioritization"
+      - "Savings goal setting and tracking"
+      - "Spending analysis and habit identification"
+      - "Investment education and guidance"
+      - "Financial wellness assessment"
+    limitations: "Not a substitute for professional financial advisors for complex situations"
+
+  secondary_capability:
+    supported: true
+    description: "Advanced financial planning and education"
+    features:
+      - "Multi-goal financial planning"
+      - "Risk assessment for personal investments"
+      - "Tax planning basics and strategies"
+      - "Retirement planning guidance"
+      - "Insurance needs evaluation"
+    limitations: "General guidance only; not certified financial advice"
+
+  education_capability:
+    supported: true
+    description: "Financial literacy and investment education"
+    features:
+      - "Investment concept explanations"
+      - "Market trend education"
+      - "Risk management teaching"
+      - "Financial terminology clarification"
+      - "Product and service comparisons"
+    limitations: "Educational content only; not personalized investment recommendations"
+
+# Requirements
+requirements:
+  packages:
+    - "agno>=2.2.0"
+    - "bindu==2026.9.4"
+  system:
+    - "Python 3.12+"
+    - "Internet connection for educational content"
+  min_memory_mb: 256
+  external_services:
+    - "OpenRouter API for LLM coaching"
+
+# Performance Metrics
+performance:
+  avg_processing_time_ms: 3000
+  max_concurrent_requests: 10
+  memory_per_request_mb: 256
+  timeout_seconds: 60
+  scalability: horizontal
+
+# Tool Restrictions
+allowed_tools:
+  - Read
+  - Write
+  - Execute
+
+# Rich Documentation
+documentation:
+  overview: |
+    The Financial Coach skill provides comprehensive personal finance guidance through AI-powered coaching.
+    It helps users develop healthy financial habits, create budgets, manage debt, and learn
+    about investing. The coach focuses on education, habit formation, and actionable strategies
+    rather than specific product recommendations.
+
+  use_cases:
+    when_to_use:
+      - "Personal budget creation and optimization"
+      - "Debt repayment strategy planning"
+      - "Savings goal setting and tracking"
+      - "Financial habit analysis and improvement"
+      - "Investment education and guidance"
+      - "Financial wellness assessment"
+      - "Spending pattern analysis"
+
+    when_not_to_use:
+      - "Specific investment product recommendations"
+      - "Tax preparation or filing"
+      - "Legal financial advice"
+      - "Insurance policy recommendations"
+      - "Complex financial planning requiring professional certification"
+
+  input_structure: |
+    Accepts natural language queries about personal finance, budgeting, and financial education.
+    
+    Examples:
+    - "help me create a monthly budget"
+    - "what's the best strategy to pay off credit card debt"
+    - "how can I start investing with $100"
+    - "help me understand my spending habits"
+    
+    Constraints:
+    - Queries should be about personal finance education and guidance
+    - Cannot provide certified financial advice
+    - Focus on education and strategy rather than specific recommendations
+    - Always include disclaimers about professional advice
+
+  output_format: |
+    Provides coaching responses with:
+    
+    1. Clear, actionable financial guidance
+    2. Step-by-step strategies and plans
+    3. Educational explanations and concepts
+    4. Budget templates and frameworks
+    5. Progress tracking suggestions
+
+    Example Output:
+    # Personal Budget Coaching
+    
+    ## Monthly Budget Framework
+    Here's a comprehensive budget structure based on your income:
+    
+    ### Essential Expenses (50%)
+    - Housing: Rent/mortgage, utilities, maintenance
+    - Transportation: Car payment, gas, insurance, maintenance
+    - Groceries: Food, household supplies, personal care
+    - Insurance: Health, auto, life, property
+    
+    ### Financial Goals (20%)
+    - Emergency Fund: 3-6 months of expenses
+    - Retirement: 10-15% of income
+    - Debt Payment: Extra payments beyond minimums
+    
+    ### Lifestyle (30%)
+    - Entertainment: Dining out, movies, hobbies
+    - Personal: Clothing, electronics, travel
+    - Miscellaneous: Gifts, subscriptions, unexpected expenses
+    
+    *This is educational guidance. Consider consulting a certified financial advisor for your specific situation.*
+
+  error_handling:
+    - "Ambiguous user financial situations"
+    - "Insufficient information for personalized advice"
+    - "Complex financial scenarios requiring professional expertise"
+    - "User requests for specific investment recommendations"
+
+  examples:
+    - title: "Budget Creation Request"
+      input:
+        query: "help me create a monthly budget"
+      output:
+        success: true
+        result:
+          data: "Comprehensive budget framework with percentage-based allocation"
+        metadata:
+          processing_time_ms: 3000
+
+    - title: "Debt Strategy Guidance"
+      input:
+        query: "what's the best strategy to pay off credit card debt"
+      output:
+        success: true
+        result:
+          data: "Debt snowball vs avalanche methods comparison with pros/cons"
+        metadata:
+          processing_time_ms: 2800
+
+    - title: "Investment Education"
+      input:
+        query: "how can I start investing with $100"
+      output:
+        success: true
+        result:
+          data: "Introduction to low-cost investing strategies and index funds"
+        metadata:
+          processing_time_ms: 2500
+
+  best_practices:
+    for_developers:
+      - "Focus on educational content rather than specific recommendations"
+      - "Include clear disclaimers about professional financial advice"
+      - "Provide actionable, step-by-step guidance"
+      - "Use budget templates and frameworks that users can customize"
+      - "Emphasize financial habit formation and long-term wellness"
+
+    for_orchestrators:
+      - "Route personal finance queries to this skill based on keywords like 'budget', 'debt', 'saving'"
+      - "Chain with investment education skills for comprehensive guidance"
+      - "Consider user financial literacy level when providing explanations"
+      - "Implement progress tracking suggestions for long-term engagement"
+
+  installation: |
+    The Financial Coach skill is included in financial-coach-agent package.
+    
+    Required packages are automatically installed:
+    - agno>=2.2.0 (agent framework)
+    - bindu==2026.9.4 (agent infrastructure)
+
+    System Requirements:
+    - Python 3.12 or higher
+    - 256MB minimum memory
+    - Internet connection for educational content
+
+  versioning:
+    - version: "1.0.0"
+      date: "2026-03-02"
+      changes: "Initial release with core financial coaching capabilities"
+    - version: "1.1.0"
+      status: "planned"
+      changes: "Enhanced budget templates and debt strategies"
+    - version: "2.0.0"
+      status: "planned"
+      changes: "Multi-goal planning and advanced financial wellness tracking"
+
+# Assessment fields for skill negotiation
+assessment:
+  keywords:
+    - "financial coaching"
+    - "personal finance"
+    - "budget planning"
+    - "debt management"
+    - "investment education"
+    - "financial habits"
+    - "money management"
+    - "savings strategies"
+    - "expense tracking"
+    - "financial wellness"
+
+  specializations:
+    - domain: "personal finance"
+      confidence_boost: 0.6
+    - domain: "financial coaching"
+      confidence_boost: 0.7
+    - domain: "budget planning"
+      confidence_boost: 0.5
+    - domain: "investment education"
+      confidence_boost: 0.4
+
+  anti_patterns:
+    - "specific investment recommendations"
+    - "tax preparation or filing"
+    - "legal financial advice"
+    - "insurance policy recommendations"
+    - "complex financial planning"
+    - "certified financial advisory services"
+
+  complexity_indicators:
+    simple:
+      - "basic budget concepts"
+      - "simple saving strategies"
+      - "financial terminology questions"
+      - "habit improvement tips"
+    medium:
+      - "debt repayment strategies"
+      - "investment education"
+      - "multi-goal planning"
+      - "budget optimization"
+    complex:
+      - "comprehensive financial planning"
+      - "advanced debt management"
+      - "tax planning strategies"
+      - "retirement planning guidance"

@@ -1,0 +1,52 @@
+site_name: financial-coach-agent
+repo_url: https://github.com/Paraschamoli/financial-coach-agent
+site_url: https://Paraschamoli.github.io/financial-coach-agent
+site_description: AI Financial Coach Agent is a personalized financial advisor that analyzes user income, expenses, debts, and goals to provide actionable recommendations for budgeting, savings, and debt reduction. Using a multi-agent system, it delivers optimized financial strategies, tracks progress, and generates interactive visualizations, including expense breakdowns, savings plans, and debt payoff timelines, helping users make informed financial decisions efficiently.
+site_author: Paras Chamoli
+edit_uri: edit/main/docs/
+repo_name: Paraschamoli/financial-coach-agent
+copyright: Maintained by <a href="https://Paraschamoli.com">Paraschamoli</a>.
+
+nav:
+  - Home: index.md
+  - Modules: modules.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src/financial_coach_agent"]
+theme:
+  name: material
+  feature:
+    tabs: true
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Paraschamoli/financial-coach-agent
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/financial-coach-agent
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true

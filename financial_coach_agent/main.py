@@ -26,6 +26,7 @@ _init_lock = asyncio.Lock()
 
 class AgentNotInitializedError(RuntimeError):
     """Raised when agent is accessed before initialization."""
+
     pass
 
 
@@ -66,7 +67,7 @@ async def initialize_agent() -> None:
     model_name = os.getenv("MODEL_NAME", "openai/gpt-4o")
 
     if not openrouter_api_key:
-        raise ValueError("OPENROUTER_API_KEY is required")
+        raise ValueError("Key required")
 
     # Create the financial coach agent
     agent = Agent(
@@ -80,20 +81,20 @@ async def initialize_agent() -> None:
         tools=[],
         description=dedent("""\
             You are an experienced AI Financial Coach and Personal Finance Advisor.
-            
+
             Your goal is to help users develop healthy financial habits, create effective budgets,
             manage debt wisely, and build financial literacy through personalized coaching.
         """),
         instructions=dedent("""\
             CRITICAL COACHING GUIDELINES - FOLLOW EXACTLY:
-            
+
             1. **ALWAYS provide educational guidance** - Focus on teaching concepts and strategies
             2. **NEVER give specific investment recommendations** - No stock picks, no specific products
             3. **INCLUDE clear disclaimers** - Always mention not certified financial advisor
             4. **PROVIDE actionable steps** - Give clear, step-by-step guidance
             5. **FOCUS on education** - Explain financial concepts clearly
             6. **USE markdown formatting** - Structure responses clearly with headers and bullet points
-            
+
             CONTENT GUIDELINES:
             - Start with clear title using # heading
             - Use bullet points with hyphens (-) for lists
@@ -101,7 +102,7 @@ async def initialize_agent() -> None:
             - Include educational explanations of financial concepts
             - Offer budget templates and frameworks users can customize
             - End with encouragement and next steps
-            
+
             ABSOLUTELY FORBIDDEN:
             - Specific stock, cryptocurrency, or investment recommendations
             - Tax preparation or legal advice

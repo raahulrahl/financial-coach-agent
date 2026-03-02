@@ -102,10 +102,8 @@ select = [
     "TRY",
 ]
 ignore = [
-    # LineTooLong
-    "E501",
-    # DoNotAssignLambda
-    "E731",
+    "E501",  # Long string messages
+    "TRY003",  # Long messages in exceptions
 ]
 
 [tool.ruff.lint.per-file-ignores]

@@ -131,13 +131,13 @@ documentation:
 
   input_structure: |
     Accepts natural language queries about personal finance, budgeting, and financial education.
-    
+
     Examples:
     - "help me create a monthly budget"
     - "what's the best strategy to pay off credit card debt"
     - "how can I start investing with $100"
     - "help me understand my spending habits"
-    
+
     Constraints:
     - Queries should be about personal finance education and guidance
     - Cannot provide certified financial advice
@@ -146,7 +146,7 @@ documentation:
 
   output_format: |
     Provides coaching responses with:
-    
+
     1. Clear, actionable financial guidance
     2. Step-by-step strategies and plans
     3. Educational explanations and concepts
@@ -155,26 +155,26 @@ documentation:
 
     Example Output:
     # Personal Budget Coaching
-    
+
     ## Monthly Budget Framework
     Here's a comprehensive budget structure based on your income:
-    
+
     ### Essential Expenses (50%)
     - Housing: Rent/mortgage, utilities, maintenance
     - Transportation: Car payment, gas, insurance, maintenance
     - Groceries: Food, household supplies, personal care
     - Insurance: Health, auto, life, property
-    
+
     ### Financial Goals (20%)
     - Emergency Fund: 3-6 months of expenses
     - Retirement: 10-15% of income
     - Debt Payment: Extra payments beyond minimums
-    
+
     ### Lifestyle (30%)
     - Entertainment: Dining out, movies, hobbies
     - Personal: Clothing, electronics, travel
     - Miscellaneous: Gifts, subscriptions, unexpected expenses
-    
+
     *This is educational guidance. Consider consulting a certified financial advisor for your specific situation.*
 
   error_handling:
@@ -230,7 +230,7 @@ documentation:
 
   installation: |
     The Financial Coach skill is included in financial-coach-agent package.
-    
+
     Required packages are automatically installed:
     - agno>=2.2.0 (agent framework)
     - bindu==2026.9.4 (agent infrastructure)

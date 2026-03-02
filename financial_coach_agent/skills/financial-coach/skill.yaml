@@ -5,29 +5,23 @@ author: paras@getbindu.com
 
 # Description
 description: |
-  AI-powered personal finance coach that provides comprehensive financial guidance, budget planning,
-  debt management strategies, and investment education. Helps users develop healthy financial habits
-  and make informed money decisions through personalized coaching and actionable insights.
+  LLM-based financial coaching agent that provides educational guidance on budgeting, debt management,
+  and financial literacy. Generates text-based coaching responses using OpenRouter API with no external
+  tools or integrations.
 
 # Tags and Modes
 tags:
   - financial-coaching
-  - personal-finance
   - budget-planning
   - debt-management
-  - investment-education
-  - financial-habits
-  - money-management
-  - financial-wellness
-  - savings-strategies
-  - expense-tracking
+  - financial-education
+  - personal-finance
 
 input_modes:
   - text/plain
   - application/json
 
 output_modes:
-  - text/plain
   - text/markdown
   - application/json
 
@@ -36,9 +30,7 @@ examples:
   - "help me create a monthly budget"
   - "what's the best strategy to pay off credit card debt"
   - "how can I start investing with $100"
-  - "help me understand my spending habits"
   - "what's a good emergency fund size"
-  - "how do I improve my credit score"
   - "teach me about index funds"
   - "help me set financial goals"
 
@@ -46,49 +38,47 @@ examples:
 capabilities_detail:
   primary_capability:
     supported: true
-    description: "Personalized financial coaching and guidance"
+    description: "Text-based financial coaching and educational guidance"
     features:
-      - "Budget creation and optimization strategies"
-      - "Debt repayment planning and prioritization"
-      - "Savings goal setting and tracking"
-      - "Spending analysis and habit identification"
-      - "Investment education and guidance"
-      - "Financial wellness assessment"
-    limitations: "Not a substitute for professional financial advisors for complex situations"
+      - "Budget framework suggestions"
+      - "Debt repayment strategy explanations (avalanche, snowball methods)"
+      - "Savings goal planning guidance"
+      - "Investment concept education"
+      - "Financial habit coaching"
+      - "Markdown-formatted responses with tables and action plans"
+    limitations: "No data persistence, no calculations, no external data sources, not certified financial advice"
 
   secondary_capability:
-    supported: true
-    description: "Advanced financial planning and education"
-    features:
-      - "Multi-goal financial planning"
-      - "Risk assessment for personal investments"
-      - "Tax planning basics and strategies"
-      - "Retirement planning guidance"
-      - "Insurance needs evaluation"
-    limitations: "General guidance only; not certified financial advice"
+    supported: false
+    description: "Not supported by code"
+    features: []
+    limitations: "No advanced planning features implemented"
 
   education_capability:
     supported: true
-    description: "Financial literacy and investment education"
+    description: "Financial literacy education through LLM knowledge"
     features:
-      - "Investment concept explanations"
-      - "Market trend education"
-      - "Risk management teaching"
+      - "Financial concept explanations"
+      - "General investment education"
+      - "Budget template suggestions"
       - "Financial terminology clarification"
-      - "Product and service comparisons"
-    limitations: "Educational content only; not personalized investment recommendations"
+    limitations: "Limited to LLM training data, no real-time market data, no specific product recommendations"
 
 # Requirements
 requirements:
   packages:
     - "agno>=2.2.0"
     - "bindu==2026.9.4"
+    - "python-dotenv"
   system:
     - "Python 3.12+"
-    - "Internet connection for educational content"
+    - "Internet connection for OpenRouter API"
   min_memory_mb: 256
   external_services:
-    - "OpenRouter API for LLM coaching"
+    - "OpenRouter API (required)"
+  environment_variables:
+    - "OPENROUTER_API_KEY (required)"
+    - "MODEL_NAME (optional, defaults to openai/gpt-4o)"
 
 # Performance Metrics
 performance:
@@ -99,203 +89,151 @@ performance:
   scalability: horizontal
 
 # Tool Restrictions
-allowed_tools:
-  - Read
-  - Write
-  - Execute
+allowed_tools: []
 
 # Rich Documentation
 documentation:
   overview: |
-    The Financial Coach skill provides comprehensive personal finance guidance through AI-powered coaching.
-    It helps users develop healthy financial habits, create budgets, manage debt, and learn
-    about investing. The coach focuses on education, habit formation, and actionable strategies
-    rather than specific product recommendations.
+    LLM-based financial coaching agent using OpenRouter API (default: openai/gpt-4o).
+    Provides text-based educational guidance on budgeting, debt management, and financial literacy.
+    No tools, no data persistence, no external integrations beyond the LLM API.
+    Agent uses hardcoded instructions to focus on education and disclaimers.
 
   use_cases:
     when_to_use:
-      - "Personal budget creation and optimization"
-      - "Debt repayment strategy planning"
-      - "Savings goal setting and tracking"
-      - "Financial habit analysis and improvement"
-      - "Investment education and guidance"
-      - "Financial wellness assessment"
-      - "Spending pattern analysis"
+      - "Budget framework suggestions"
+      - "Debt repayment strategy education (avalanche vs snowball)"
+      - "Savings goal planning concepts"
+      - "Investment education (general concepts only)"
+      - "Financial terminology explanations"
 
     when_not_to_use:
       - "Specific investment product recommendations"
       - "Tax preparation or filing"
       - "Legal financial advice"
       - "Insurance policy recommendations"
-      - "Complex financial planning requiring professional certification"
+      - "Real-time market data or calculations"
+      - "Data persistence or user tracking"
+      - "Expense tracking or analysis (no tools available)"
 
   input_structure: |
-    Accepts natural language queries about personal finance, budgeting, and financial education.
+    JSON-RPC 2.0 message/send request with text parts.
 
-    Examples:
-    - "help me create a monthly budget"
-    - "what's the best strategy to pay off credit card debt"
-    - "how can I start investing with $100"
-    - "help me understand my spending habits"
-
-    Constraints:
-    - Queries should be about personal finance education and guidance
-    - Cannot provide certified financial advice
-    - Focus on education and strategy rather than specific recommendations
-    - Always include disclaimers about professional advice
+    Example:
+    {
+      "jsonrpc": "2.0",
+      "method": "message/send",
+      "params": {
+        "message": {
+          "role": "user",
+          "parts": [{"kind": "text", "text": "help me create a monthly budget"}]
+        },
+        "skillId": "financial-coach-v1"
+      }
+    }
 
   output_format: |
-    Provides coaching responses with:
+    Markdown-formatted text responses with:
+    - Headers (# and ##)
+    - Tables for budget breakdowns
+    - Bullet points for action items
+    - Disclaimers about not being certified financial advisor
 
-    1. Clear, actionable financial guidance
-    2. Step-by-step strategies and plans
-    3. Educational explanations and concepts
-    4. Budget templates and frameworks
-    5. Progress tracking suggestions
-
-    Example Output:
-    # Personal Budget Coaching
-
-    ## Monthly Budget Framework
-    Here's a comprehensive budget structure based on your income:
-
-    ### Essential Expenses (50%)
-    - Housing: Rent/mortgage, utilities, maintenance
-    - Transportation: Car payment, gas, insurance, maintenance
-    - Groceries: Food, household supplies, personal care
-    - Insurance: Health, auto, life, property
-
-    ### Financial Goals (20%)
-    - Emergency Fund: 3-6 months of expenses
-    - Retirement: 10-15% of income
-    - Debt Payment: Extra payments beyond minimums
-
-    ### Lifestyle (30%)
-    - Entertainment: Dining out, movies, hobbies
-    - Personal: Clothing, electronics, travel
-    - Miscellaneous: Gifts, subscriptions, unexpected expenses
-
-    *This is educational guidance. Consider consulting a certified financial advisor for your specific situation.*
+    Returns task with status "submitted", then "completed" with result in artifacts.
 
   error_handling:
-    - "Ambiguous user financial situations"
-    - "Insufficient information for personalized advice"
-    - "Complex financial scenarios requiring professional expertise"
-    - "User requests for specific investment recommendations"
+    - "Missing OPENROUTER_API_KEY returns ValueError"
+    - "LLM API failures propagate to caller"
+    - "No input validation beyond JSON-RPC layer"
 
   examples:
     - title: "Budget Creation Request"
       input:
-        query: "help me create a monthly budget"
+        text: "I earn $5,200 per month. Create a budget."
       output:
-        success: true
-        result:
-          data: "Comprehensive budget framework with percentage-based allocation"
-        metadata:
-          processing_time_ms: 3000
+        format: "Markdown with budget table, debt strategy, savings plan"
+        includes_disclaimer: true
+        processing_time_ms: 3000
 
-    - title: "Debt Strategy Guidance"
+    - title: "Debt Strategy Request"
       input:
-        query: "what's the best strategy to pay off credit card debt"
+        text: "I have $8,000 credit card debt at 22% interest"
       output:
-        success: true
-        result:
-          data: "Debt snowball vs avalanche methods comparison with pros/cons"
-        metadata:
-          processing_time_ms: 2800
-
-    - title: "Investment Education"
-      input:
-        query: "how can I start investing with $100"
-      output:
-        success: true
-        result:
-          data: "Introduction to low-cost investing strategies and index funds"
-        metadata:
-          processing_time_ms: 2500
+        format: "Debt avalanche explanation with payment timeline"
+        includes_disclaimer: true
+        processing_time_ms: 2800
 
   best_practices:
     for_developers:
-      - "Focus on educational content rather than specific recommendations"
-      - "Include clear disclaimers about professional financial advice"
-      - "Provide actionable, step-by-step guidance"
-      - "Use budget templates and frameworks that users can customize"
-      - "Emphasize financial habit formation and long-term wellness"
+      - "Set OPENROUTER_API_KEY environment variable"
+      - "Agent has no tools - all responses are LLM-generated text"
+      - "No data persistence between requests"
+      - "Responses always include disclaimers per hardcoded instructions"
 
     for_orchestrators:
-      - "Route personal finance queries to this skill based on keywords like 'budget', 'debt', 'saving'"
-      - "Chain with investment education skills for comprehensive guidance"
-      - "Consider user financial literacy level when providing explanations"
-      - "Implement progress tracking suggestions for long-term engagement"
+      - "Route budget/debt/savings queries based on keywords"
+      - "Agent cannot perform calculations or access external data"
+      - "Responses are educational guidance only"
+      - "No session state or user tracking"
 
   installation: |
-    The Financial Coach skill is included in financial-coach-agent package.
+    Requirements:
+    - Python 3.12+
+    - agno>=2.2.0
+    - bindu
+    - python-dotenv
 
-    Required packages are automatically installed:
-    - agno>=2.2.0 (agent framework)
-    - bindu==2026.9.4 (agent infrastructure)
+    Environment:
+    - OPENROUTER_API_KEY (required)
+    - MODEL_NAME (optional, default: openai/gpt-4o)
 
-    System Requirements:
-    - Python 3.12 or higher
-    - 256MB minimum memory
-    - Internet connection for educational content
+    Run: python -m financial_coach_agent.main
 
   versioning:
     - version: "1.0.0"
       date: "2026-03-02"
-      changes: "Initial release with core financial coaching capabilities"
-    - version: "1.1.0"
-      status: "planned"
-      changes: "Enhanced budget templates and debt strategies"
-    - version: "2.0.0"
-      status: "planned"
-      changes: "Multi-goal planning and advanced financial wellness tracking"
+      changes: "Initial release - LLM agent with OpenRouter, no tools"
 
 # Assessment fields for skill negotiation
 assessment:
   keywords:
-    - "financial coaching"
-    - "personal finance"
-    - "budget planning"
-    - "debt management"
+    - "budget"
+    - "debt"
+    - "savings"
+    - "financial plan"
+    - "emergency fund"
+    - "retirement"
+    - "credit card"
+    - "student loan"
     - "investment education"
-    - "financial habits"
-    - "money management"
-    - "savings strategies"
-    - "expense tracking"
-    - "financial wellness"
 
   specializations:
-    - domain: "personal finance"
-      confidence_boost: 0.6
-    - domain: "financial coaching"
-      confidence_boost: 0.7
     - domain: "budget planning"
+      confidence_boost: 0.6
+    - domain: "debt strategy education"
+      confidence_boost: 0.6
+    - domain: "financial education"
       confidence_boost: 0.5
-    - domain: "investment education"
-      confidence_boost: 0.4
 
   anti_patterns:
-    - "specific investment recommendations"
-    - "tax preparation or filing"
-    - "legal financial advice"
-    - "insurance policy recommendations"
-    - "complex financial planning"
-    - "certified financial advisory services"
+    - "stock picks"
+    - "specific investment products"
+    - "tax filing"
+    - "legal advice"
+    - "insurance recommendations"
+    - "real-time market data"
+    - "expense tracking"
+    - "calculations"
 
   complexity_indicators:
     simple:
-      - "basic budget concepts"
-      - "simple saving strategies"
-      - "financial terminology questions"
-      - "habit improvement tips"
+      - "budget framework"
+      - "savings concepts"
+      - "financial terms"
+      - "general advice"
     medium:
       - "debt repayment strategies"
-      - "investment education"
+      - "investment concepts"
       - "multi-goal planning"
-      - "budget optimization"
     complex:
-      - "comprehensive financial planning"
-      - "advanced debt management"
-      - "tax planning strategies"
-      - "retirement planning guidance"
+      - "Not supported - agent provides educational guidance only"

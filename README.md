@@ -19,17 +19,17 @@
 
 ---
 
-## Overview
+## 📖 Overview
 
-AI Financial Coach Agent is a comprehensive personal finance advisor that provides educational guidance, budget planning, debt management strategies, and investment education. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for the Internet of Agents, it helps users develop healthy financial habits and make informed money decisions through personalized coaching and actionable insights.
+AI Financial Coach Agent is a comprehensive personal finance advisor that provides educational guidance, budget planning, debt management strategies, and investment education. Built on the [Bindu Agent Framework](https://github.com/getbindu/bindu) for Internet of Agents, it helps users develop healthy financial habits and make informed money decisions through personalized coaching and actionable insights.
 
 **Key Capabilities:**
-- **Budget Planning & Optimization** - Create personalized monthly budgets with percentage-based allocation
-- **Debt Management Strategies** - Snowball vs avalanche methods with payoff timelines
-- **Savings Goal Setting** - Emergency fund planning and progress tracking
-- **Financial Education** - Investment concepts, risk management, and financial literacy
-- **Spending Analysis** - Identify patterns and optimize expenses
-- **Risk Assessment** - Educational guidance on financial risks
+- 💰 **Budget Planning & Optimization** - Create personalized monthly budgets with percentage-based allocation
+- 📊 **Debt Management Strategies** - Snowball vs avalanche methods with payoff timelines
+- 🎯 **Savings Goal Setting** - Emergency fund planning and progress tracking
+- 📚 **Financial Education** - Investment concepts, risk management, and financial literacy
+- 📈 **Spending Analysis** - Identify patterns and optimize expenses
+- 🛡️ **Risk Assessment** - Educational guidance on financial risks
 
 **Educational Focus:**
 - Always includes clear disclaimers about not being a certified financial advisor
@@ -38,13 +38,13 @@ AI Financial Coach Agent is a comprehensive personal finance advisor that provid
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.12+
 - [uv](https://github.com/astral-sh/uv) package manager
-- API keys for OpenRouter and Mem0 (both have free tiers)
+- OpenRouter API key (free tier available)
 
 ### Installation
 
@@ -54,7 +54,7 @@ git clone https://github.com/Paraschamoli/financial-coach-agent.git
 cd financial-coach-agent
 
 # Create virtual environment
-uv venv --python 3.12.9
+uv venv --python 3.12
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
@@ -66,32 +66,19 @@ cp .env.example .env
 
 ### Configuration
 
-Edit `.env` and add your API keys:
+Edit `.env` and add your API key:
 
 | Key | Get It From | Required |
 |-----|-------------|----------|
 | `OPENROUTER_API_KEY` | [OpenRouter](https://openrouter.ai/keys) | ✅ Yes |
-| `MEM0_API_KEY` | [Mem0 Dashboard](https://app.mem0.ai/dashboard/api-keys) | If you want to use Mem0 tools |
 
-### Run the Agent
+### Run Agent
 
 ```bash
 # Start the agent
-uv run python -m financial_coach_agent
+uv run -m financial_coach_agent
 
 # Agent will be available at http://localhost:3773
-```
-
-### Github Setup
-
-```bash
-# Initialize git repository and commit your code
-git init -b main
-git add .
-git commit -m "Initial commit"
-
-# Create repository on GitHub and push (replace with your GitHub username)
-gh repo create Paraschamoli/financial-coach-agent --public --source=. --remote=origin --push
 ```
 
 ---
@@ -153,7 +140,6 @@ The agent exposes a RESTful API when running. Default endpoint: `http://localhos
 For complete API documentation, request/response formats, and examples, visit:
 
 📚 **[Bindu API Reference - Send Message to Agent](https://docs.getbindu.com/api-reference/all-the-tasks/send-message-to-agent)**
-
 
 ### Additional Resources
 
@@ -218,16 +204,8 @@ docker-compose up --build
 
 The agent runs on port `3773` and requires:
 - `OPENROUTER_API_KEY` environment variable
-- `MEM0_API_KEY` environment variable
 
-Configure these in your `.env` file before running.
-
-### Production Deployment
-
-```bash
-# Use production compose file
-docker-compose -f docker-compose.prod.yml up -d
-```
+Configure this in your `.env` file before running.
 
 ---
 
@@ -273,7 +251,7 @@ GitHub Actions will automatically:
 financial-coach-agent/
 ├── financial_coach_agent/
 │   ├── skills/
-│   │   └── financial_coach_agent/
+│   │   └── financial-coach/
 │   │       ├── skill.yaml          # Skill configuration
 │   │       └── __init__.py
 │   ├── __init__.py
@@ -371,4 +349,3 @@ uvx cookiecutter https://github.com/getbindu/create-bindu-agent.git
   <a href="https://discord.gg/3w5zuYUuwt">💬 Join Discord</a> •
   <a href="https://bindus.directory">🌐 Agent Directory</a>
 </p>
- 

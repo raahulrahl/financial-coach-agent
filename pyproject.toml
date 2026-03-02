@@ -45,6 +45,9 @@ dev = [
     "mkdocs-material>=8.5.10",
     "mkdocstrings[python]>=0.26.1",
     "types-requests>=2.31.0",
+    "mypy>=1.8.0",
+    "types-setuptools>=75.0.0",
+    "types-python-dateutil>=2.9.0",
 ]
 
 [build-system]
@@ -57,6 +60,11 @@ packages = ["financial_coach_agent"]
 [tool.ty.environment]
 python = "./.venv"
 python-version = "3.12"
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+strict_optional = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
